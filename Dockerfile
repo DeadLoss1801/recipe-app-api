@@ -25,3 +25,8 @@ RUN python -m venv /py && \
 ENV  PATH="/py/bin:$PATH"
 
 USER django-user
+ENV PATH="/scripts:/py/bin:$PATH"
+
+USER django-user
+
+CMD ["run.sh"]
