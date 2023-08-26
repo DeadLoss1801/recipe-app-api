@@ -1,12 +1,12 @@
 FROM python:3.9-alpine3.13
-LABEL maintainer="deadloss1801"
+LABEL maintainer="londonappdeveloper.com"
 
 ENV PYTHONUNBUFFERED 1
 
-COPY ./requirements.txt  /tmp/requirements.txt
-COPY ./requirements.dev.txt  /tmp/requirements.dev.txt
+COPY ./requirements.txt /tmp/requirements.txt
+COPY ./requirements.dev.txt /tmp/requirements.dev.txt
 COPY ./app /app
-WORKDIR /app 
+WORKDIR /app
 EXPOSE 8000
 
 ARG DEV=false
@@ -20,13 +20,8 @@ RUN python -m venv /py && \
     adduser \
     --disabled-password \
     --no-create-home \
-    django-user && \
+    django-user
 
-    ENV  PATH="/py/bin:$PATH"
-
-USER django-user
-ENV PATH="/scripts:/py/bin:$PATH"
+ENV PATH="/py/bin:$PATH"
 
 USER django-user
-
-CMD ["run.sh"]
